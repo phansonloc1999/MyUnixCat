@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <cstring>
 
 using namespace std;
 
@@ -12,13 +11,16 @@ int main(int argc, char const *argv[])
 		
 		if (inStream.is_open())
 		{
-			char* line = new char;
+			string line;
 			while (!inStream.eof())
 			{
-				inStream.getline(line, 1024);
+				getline(inStream, line, '\n');
 				cout << line << endl;
 			}
 		}
+	}
+	else {
+		cout << "Usage: mycat [PATH TO TARGET FILE]" << endl;
 	}
 	return 0;
 }
