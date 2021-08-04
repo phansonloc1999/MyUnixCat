@@ -18,6 +18,7 @@ int main(int argc, char const *argv[])
 				cout << line << endl;
 			}
 		}
+		else cout << "File not found!" << endl;
 	}
 	else {
 		cout << "Usage: mycat [PATH TO TARGET FILE]" << endl;
