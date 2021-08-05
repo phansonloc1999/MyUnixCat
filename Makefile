@@ -89,3 +89,6 @@ clean:
 run: all
 	./$(OUTPUTMAIN)
 	@echo Executing 'run: all' complete!
+
+install: all
+	@cp ./output/main ~/bin/mycat && echo "Install complete!"
