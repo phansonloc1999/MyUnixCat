@@ -16,6 +16,8 @@ Clone the repository
 
 ``git clone https://github.com/phansonloc1999/MyUnixCat.git``
 
+``cd MyUnixCat``
+
 Compile and install
 
 ``make install``
