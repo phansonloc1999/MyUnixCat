@@ -11,6 +11,7 @@ int main(int argc, char const *argv[])
 		string line;
 		while (true)
 		{
+			if (cin.eof()) return 0;
 			getline(cin, line, '\n');
 			cout << line << endl;
 		}
