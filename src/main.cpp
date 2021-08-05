@@ -8,30 +8,34 @@ int main(int argc, char const *argv[])
 {
 	if (argc > 1)
 	{
-		if (strcmp(argv[1], "-h"))
+		if (strcmp(argv[1], "-h") == 0)
 		{
 			cout << "Usage: mycat [TARGET FILE PATH]" << endl;
+			return 1;
 		}
-		else
-		{
-			ifstream inStream(argv[1], ios::in);
 
-			if (inStream)
+		ifstream inStream(argv[1], ios::in);
+		ofstream outStream(argv[3], ios::out | ios::trunc);
+		if (inStream)
+		{
+			string line;
+			while (!inStream.eof())
 			{
-				string line;
-				while (!inStream.eof())
+				getline(inStream, line, '\n');
+				cout << line << endl;
+
+				if (outStream)
 				{
-					getline(inStream, line, '\n');
-					cout << line << endl;
+					outStream << line << endl;
 				}
 			}
-			else
-				cout << "File doesn't exist" << endl;
 		}
+		else
+			cout << "ERROR File doesn't exist" << endl;
 	}
 	else
 	{
-		cout << "Mycat: No arguments passed! Nothing to do" << endl;
+		cout << "mycat: No arguments passed. Nothing to do here!" << endl;
 	}
 	return 0;
 }
