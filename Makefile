@@ -66,7 +66,7 @@ OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUT)/$(MAIN))
 
 all: $(OUTPUT) $(MAIN)
 	@echo Executing 'all' complete!
-	@sudo cp ./output/main /usr/bin/mycat
+	@cp ./output/main ~/bin/mycat
 
 $(OUTPUT):
 	$(MD) $(OUTPUT)
