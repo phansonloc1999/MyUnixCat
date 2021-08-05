@@ -5,19 +5,8 @@
 
 using namespace std;
 
-char **completion(const char *, int, int);
-char *generator(const char *, int);
-char *options[] = {
-	"Arthur Dent",
-	"Ford Prefect",
-	"Tricia McMillan",
-	"Zaphod Beeblebrox",
-	NULL};
-
 int main(int argc, char const *argv[])
 {
-	rl_attempted_completion_function = completion;
-
 	if (argc == 1)
 	{
 		string line;
@@ -61,32 +50,4 @@ int main(int argc, char const *argv[])
 	}
 
 	return 0;
-}
-
-char **completion(const char *text, int start, int end)
-{
-	rl_attempted_completion_over = 1;
-	return rl_completion_matches(text, generator);
-}
-
-char *generator(const char *text, int state)
-{
-	static int list_index, len;
-	char *name;
-
-	if (!state)
-	{
-		list_index = 0;
-		len = strlen(text);
-	}
-
-	while ((name = options[list_index++]))
-	{
-		if (strncmp(name, text, len) == 0)
-		{
-			return strdup(name);
-		}
-	}
-
-	return NULL;
 }
