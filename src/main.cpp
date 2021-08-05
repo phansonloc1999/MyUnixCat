@@ -11,6 +11,7 @@ int main(int argc, char const *argv[])
 		if (strcmp(argv[1], "-h") == 0)
 		{
 			cout << "Usage: mycat [TARGET FILE PATH]" << endl;
+			cout << "Usage: mycat [IN FILE PATH] > [OUT FILE PATH]" << endl;
 			return 1;
 		}
 
@@ -35,7 +36,8 @@ int main(int argc, char const *argv[])
 	}
 	else
 	{
-		cout << "mycat: No arguments passed. Nothing to do here!" << endl;
+		cout << "mycat: missing operands/operators" << endl;
+		cout << "Try 'mycat -h' for more information." << endl;
 	}
 	return 0;
 }
