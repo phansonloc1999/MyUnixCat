@@ -5,7 +5,7 @@
             "name": "Debug",
             "type": "cppdbg",
             "request": "launch",
-            "args": [],
+            "args": ["/usr/include/stdio.h"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

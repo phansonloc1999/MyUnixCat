@@ -30,9 +30,15 @@ int main(int argc, char const *argv[])
 	}
 
 	ifstream inStream(argv[1], ios::in);
+	if (!inStream)
+	{
+		string inFilePath = argv[1];
+		cout << inFilePath + ": No such file" << endl;
+	}
 	ofstream outStream(argv[2], ios::out | ios::trunc);
+
 	string line;
-	while (inStream.is_open() && !inStream.eof())
+	while (!inStream.eof())
 	{
 		getline(inStream, line, '\n');
 		cout << line << endl;
@@ -42,12 +48,5 @@ int main(int argc, char const *argv[])
 			outStream << line << endl;
 		}
 	}
-
-	if (!inStream)
-	{
-		string inFilePath = argv[1];
-		cout << inFilePath + ": No such file" << endl;
-	}
-
 	return 0;
 }
