@@ -1,8 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <sys/stat.h>
+#include <sys/types.h>
 
 using namespace std;
+
+struct stat info;
 
 int main(int argc, char const *argv[])
 {
@@ -28,14 +32,25 @@ int main(int argc, char const *argv[])
 		return 0;
 	}
 
+	string inFilePath = argv[1];
+
+	stat(argv[1], &info);
+	if (info.st_mode & S_IFDIR)
+	{
+		
+		cout << "Mycat: " + inFilePath + ": is a Directory" << endl;
+		return 0;
+	}
+	
+
 	ifstream inStream(argv[1], ios::in);
 	if (!inStream)
 	{
-		string inFilePath = argv[1];
-		cout << inFilePath + ": No such file" << endl;
+		cout << "Mycat: " + inFilePath + ": No such file" << endl;
+		return 0;
 	}
-	ofstream outStream(argv[2], ios::out | ios::trunc);
 
+	ofstream outStream(argv[2], ios::out | ios::trunc);
 	string line;
 	while (!inStream.eof())
 	{
