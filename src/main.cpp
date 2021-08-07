@@ -38,7 +38,7 @@ int main(int argc, char const *argv[])
 	if (info.st_mode & S_IFDIR)
 	{
 		
-		cout << "Mycat: " + inFilePath + ": is a Directory" << endl;
+		cout << "mycat: " + inFilePath + ": is a Directory" << endl;
 		return 0;
 	}
 	
@@ -46,7 +46,7 @@ int main(int argc, char const *argv[])
 	ifstream inStream(argv[1], ios::in);
 	if (!inStream)
 	{
-		cout << "Mycat: " + inFilePath + ": No such file" << endl;
+		cout << "mycat: " + inFilePath + ": No such file" << endl;
 		return 0;
 	}
 
