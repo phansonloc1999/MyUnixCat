@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <readline/readline.h>
 
 using namespace std;
 
