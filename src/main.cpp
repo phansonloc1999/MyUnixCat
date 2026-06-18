@@ -27,7 +27,6 @@ int main(int argc, char const *argv[])
 	{
 		cout << "Usage: mycat [IN FILE PATH]" << endl;
 		cout << "Usage: mycat > [OUT FILE PATH]" << endl;
-		cout << "Usage: mycat > [OUT FILE PATH]" << endl;
 		cout << "Usage: mycat [IN FILE PATH] [OUT FILE PATH]" << endl;
 		return 0;
 	}

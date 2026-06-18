@@ -91,4 +91,4 @@ run: all
 	@echo Executing 'run: all' complete!
 
 install: all
-	@cp ./output/main ~/bin/mycat && echo "Make install complete!"
+	@cp ./output/main /usr/local/bin/mycat && echo "Installing to /usr/local/bin/ completed!"
