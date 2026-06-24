@@ -36,6 +36,7 @@ RM			:= del /q /f
 MD	:= mkdir
 else
 MAIN	:= main
+FILE	:= file.txt
 SOURCEDIRS	:= $(shell find $(SRC) -type d)
 INCLUDEDIRS	:= $(shell find $(INCLUDE) -type d)
 LIBDIRS		:= $(shell find $(LIB) -type d)
@@ -63,6 +64,7 @@ OBJECTS		:= $(SOURCES:.cpp=.o)
 #
 
 OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUT)/$(MAIN))
+OUTPUTFILE	:= $(call FIXPATH,$(OUTPUT)/$(FILE))
 
 all: $(OUTPUT) $(MAIN)
 	@echo Executing 'all' complete!
@@ -82,7 +84,7 @@ $(MAIN): $(OBJECTS)
 
 .PHONY: clean
 clean:
-	$(RM) $(OUTPUTMAIN)
+	$(RM) $(OUTPUTMAIN) $(OUTPUTFILE)
 	$(RM) $(call FIXPATH,$(OBJECTS))
 	@echo Cleanup complete!
 

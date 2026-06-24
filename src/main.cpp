@@ -36,11 +36,9 @@ int main(int argc, char const *argv[])
 	stat(argv[1], &info);
 	if (info.st_mode & S_IFDIR)
 	{
-		
 		cout << "mycat: " + inFilePath + ": is a Directory" << endl;
 		return 0;
 	}
-	
 
 	ifstream inStream(argv[1], ios::in);
 	if (!inStream)
@@ -49,16 +47,17 @@ int main(int argc, char const *argv[])
 		return 0;
 	}
 
+	char line[256];
 	ofstream outStream(argv[2], ios::out | ios::trunc);
-	string line;
 	while (!inStream.eof())
 	{
-		getline(inStream, line, '\n');
-		cout << line << endl;
-
-		if (outStream)
+		inStream.getline(line, 256, '\n');
+		cout << line;
+		outStream << line;
+		if (!inStream.eof())
 		{
-			outStream << line << endl;
+			cout << endl;
+			outStream << endl;
 		}
 	}
 	return 0;
