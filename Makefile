@@ -15,7 +15,7 @@ CXXFLAGS	:= -std=c++17 -Wall -Wextra -g
 LFLAGS =
 
 # define output directory
-OUTPUT	:= output
+OUTPUTDIR	:= output
 
 # define source directory
 SRC		:= src
@@ -37,6 +37,7 @@ MD	:= mkdir
 else
 MAIN	:= main
 FILE	:= file.txt
+LOG		:= build.log
 SOURCEDIRS	:= $(shell find $(SRC) -type d)
 INCLUDEDIRS	:= $(shell find $(INCLUDE) -type d)
 LIBDIRS		:= $(shell find $(LIB) -type d)
@@ -63,14 +64,15 @@ OBJECTS		:= $(SOURCES:.cpp=.o)
 # deleting dependencies appended to the file from 'make depend'
 #
 
-OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUT)/$(MAIN))
-OUTPUTFILE	:= $(call FIXPATH,$(OUTPUT)/$(FILE))
+OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUTDIR)/$(MAIN))
+OUTPUTFILE	:= $(call FIXPATH,$(OUTPUTDIR)/$(FILE))
+OUTPUTLOG	:= $(call FIXPATH,$(OUTPUTDIR)/$(LOG))
 
-all: $(OUTPUT) $(MAIN)
+all: $(OUTPUTDIR) $(MAIN)
 	@echo Executing 'all' complete!
 
-$(OUTPUT):
-	$(MD) $(OUTPUT)
+$(OUTPUTDIR):
+	$(MD) $(OUTPUTDIR)
 
 $(MAIN): $(OBJECTS) 
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
@@ -80,11 +82,11 @@ $(MAIN): $(OBJECTS)
 # the rule(a .c file) and $@: the name of the target of the rule (a .o file) 
 # (see the gnu make manual section about automatic variables)
 .cpp.o:
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $<  -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
 
 .PHONY: clean
 clean:
-	$(RM) $(OUTPUTMAIN) $(OUTPUTFILE)
+	$(RM) $(OUTPUTMAIN) $(OUTPUTFILE) $(OUTPUTLOG)
 	$(RM) $(call FIXPATH,$(OBJECTS))
 	@echo Cleanup complete!
 
@@ -94,3 +96,6 @@ run: all
 
 install: all
 	@cp ./output/main /usr/local/bin/mycat && echo "Installing to /usr/local/bin/ completed!"
+
+uninstall:
+	@rm /usr/local/bin/mycat && echo "Uninstalling from /usr/local/bin completed!"

@@ -1,2 +1,4 @@
 main
+output/file.txt
+output/build.log
 *.o

@@ -19,7 +19,7 @@
                 "command": "bash",
                 "args": [
                     "-c",
-                    "make"
+                    "make | tee output/build.log"
                 ]
             },
             "osx": {

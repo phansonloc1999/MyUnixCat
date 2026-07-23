@@ -2,7 +2,6 @@
 #include <fstream>
 #include <cstring>
 #include <sys/stat.h>
-#include <sys/types.h>
 
 using namespace std;
 
@@ -15,12 +14,13 @@ int main(int argc, char const *argv[])
 		string line;
 		while (true)
 		{
+			getline(cin, line);
+			cout << line;
 			if (cin.eof())
 				return 0;
-			getline(cin, line, '\n');
-			cout << line << endl;
+			else
+				cout << endl;
 		}
-		return 0;
 	}
 
 	if (argc == 2 && strcmp(argv[1], "-h") == 0)

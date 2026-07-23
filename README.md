@@ -1,26 +1,27 @@
 # MyUnixCat
 
-A reimplementation of cat (Unix) command
+A reimplementation of GNU's cat command for Unix and Unix-like platforms with minimal dependencies
 
 ## Prerequisites
 
 ### Linux (built and tested on)
 
-*G++ version 9.3.0*
+*G++ version 9.3.0 or above*
 
-*GNU Make 4.2.1*
+*GNU Make 4.2.1 or above*
 
 ## Installation
 
 Clone the repository
 
-``git clone https://github.com/phansonloc1999/MyUnixCat.git``
+``$ git clone https://github.com/phansonloc1999/MyUnixCat.git``
 
-``cd MyUnixCat``
+``$ cd MyUnixCat``
 
 Compile and install
 
-``make install``
+### Linux  
+``$ sudo make install``
 
 ## How to use
 

@@ -1,5 +1,14 @@
 {
     "files.associations": {
         "ostream": "cpp"
-    }
+    },
+    "makefile.configureOnOpen": true,
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "${workspaceFolder}/output",
+            "binaryPath": "${workspaceFolder}/output/main",
+            "binaryArgs": []
+        }
+    ],
+    "makefile.buildLog": "${workspaceFolder}/output/build.log"
 }
