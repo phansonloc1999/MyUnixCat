@@ -37,6 +37,7 @@ MD	:= mkdir
 else
 MAIN	:= main
 FILE	:= file.txt
+CAT		:= cat.txt
 LOG		:= build.log
 SOURCEDIRS	:= $(shell find $(SRC) -type d)
 INCLUDEDIRS	:= $(shell find $(INCLUDE) -type d)
@@ -66,6 +67,7 @@ OBJECTS		:= $(SOURCES:.cpp=.o)
 
 OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUTDIR)/$(MAIN))
 OUTPUTFILE	:= $(call FIXPATH,$(OUTPUTDIR)/$(FILE))
+OUTPUTCAT	:= $(call FIXPATH,$(OUTPUTDIR)/$(CAT))
 OUTPUTLOG	:= $(call FIXPATH,$(OUTPUTDIR)/$(LOG))
 
 all: $(OUTPUTDIR) $(MAIN)
@@ -86,7 +88,7 @@ $(MAIN): $(OBJECTS)
 
 .PHONY: clean
 clean:
-	$(RM) $(OUTPUTMAIN) $(OUTPUTFILE) $(OUTPUTLOG)
+	$(RM) $(OUTPUTMAIN) $(OUTPUTFILE) $(OUTPUTLOG) $(OUTPUTCAT)
 	$(RM) $(call FIXPATH,$(OBJECTS))
 	@echo Cleanup complete!
 

@@ -1,6 +1,6 @@
 # MyUnixCat
 
-A reimplementation of GNU's cat command for Unix and Unix-like platforms with minimal dependencies
+A reimplementation of GNU's cat command for Unix and Unix-like platforms with minimal dependencies written in C/C++
 
 ## Prerequisites
 

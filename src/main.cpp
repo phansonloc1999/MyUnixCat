@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include <sys/stat.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -47,11 +48,12 @@ int main(int argc, char const *argv[])
 		return 0;
 	}
 
-	char line[256];
+	int lineLength = 1024;
+	char* line = (char*)calloc(lineLength, sizeof(char));
 	ofstream outStream(argv[2], ios::out | ios::trunc);
 	while (!inStream.eof())
 	{
-		inStream.getline(line, 256, '\n');
+		inStream.getline(line, lineLength, '\n');
 		cout << line;
 		outStream << line;
 		if (!inStream.eof())
@@ -60,5 +62,6 @@ int main(int argc, char const *argv[])
 			outStream << endl;
 		}
 	}
+	free(line);
 	return 0;
 }

@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/output/${fileBasenameNoExtension}",
-            "args": [],
+            "args": ["~/Downloads/mongo/docs/building.md", ">", "output/file.txt"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
